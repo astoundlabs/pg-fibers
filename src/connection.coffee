@@ -8,3 +8,6 @@ module.exports = class Connection
     args.push(f.resolver())
     @connection.query(args...)
     f.wait()
+
+  end: =>
+    @connection.end()

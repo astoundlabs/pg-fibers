@@ -29,7 +29,7 @@ describe 'pg-fibers', ->
   describe 'connection', ->
     beforeEach ->
       @conn = pgfibers.connect(settings)
-      
+
     it 'should return a connection object', ->
       @conn.should.instanceof Connection
       
@@ -42,3 +42,15 @@ describe 'pg-fibers', ->
         @conn.query "insert into foo(name) values('bar')"
         @conn.query("select name from foo").rows[0].name.should.eql 'bar'
         @conn.query "drop table foo"
+
+    describe 'end', ->
+      beforeEach ->
+        @conn.end()
+        
+      afterEach ->
+        @conn = pgfibers.connect(settings)
+        
+      it 'should throw an error if query is issued', ->
+        (->
+          @conn.query("create table bar(id serial primary key)")
+        ).should.throw()
