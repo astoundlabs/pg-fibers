@@ -1,0 +1,14 @@
+{
+  "name": "pg-fibers",
+  "version": "1.0.0",
+  "dependencies": {
+	"pg": "0.8.x",
+	"fibers": "1.0.x"
+  },
+  "devDependencies": {
+	"mocha-fibers": "git://github.com/astoundlabs/mocha-fibers",
+	"coffee-script": "1.3.x",
+	"js-yaml": "1.0.2",
+	"should", "1.1.x"
+  }
+}

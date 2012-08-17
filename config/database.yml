@@ -1,0 +1,4 @@
+test:
+  user: pgfibers
+  database: pgfibers
+  password: pgfibers
