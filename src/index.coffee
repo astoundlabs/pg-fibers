@@ -5,6 +5,8 @@ Connection = require './connection'
 exports.connect = (params) ->
 
   # Synchronous (via fibers) connection
-  conn = pg.connect(params, (f = new Future).resolver()) and f.wait()
+  f = new Future
+  pg.connect(params, f.resolver())
+  conn = f.wait()
 
   new Connection(conn)
